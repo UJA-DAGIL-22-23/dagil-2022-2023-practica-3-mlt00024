@@ -123,6 +123,22 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
         })
 })
 
+describe("Plantilla.imprimenobres: ", function() {
+    it("Mostrar datos nulos cuando le pasamos vector nulo",
+        function() {
+            Plantilla.imprimenombres([])
+            expect(elementoTitulo.innerHTML).toBe("Nombres de los jugadores")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+
+    it("Mostrar datos nulos cuando le pasamos un valor que no es un objeto",
+        function() {
+            Plantilla.imprimenombres(10)
+            expect(elementoTitulo.innerHTML).toBe("Nombres de los jugadores")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+})
+
 
 /*
 IMPORTANTE

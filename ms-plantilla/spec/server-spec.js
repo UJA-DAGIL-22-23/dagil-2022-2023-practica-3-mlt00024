@@ -52,7 +52,7 @@ describe('Servidor PLANTILLA:', () => {
    * Tests para acceso a la BBDD
    */
   describe('Acceso a BBDD:', () => {
-    it('Devuelve ¿¿¿ VALOR ESPERADO ??? al consultar mediante test_db', (done) => {
+    it('Devuelve los nombres al ir por la ruta test_db', (done) => {
       supertest(app)
         .get('/test_db')
         .expect(200)
@@ -60,8 +60,31 @@ describe('Servidor PLANTILLA:', () => {
         .expect(function (res) {
           //console.log( res.body ); // Para comprobar qué contiene exactamente res.body
           assert(res.body.data[0].data.hasOwnProperty('nombre'));
-          assert(res.body.data[0].data.nombre === "Lionel Andrés Messi Cuccittini");
+          assert(res.body.data[0].data.nombre === "Leo");
 
+        })
+        .end((error) => { error ? done.fail(error) : done(); }
+        );
+    });
+
+  })
+
+  /**
+   * Listar jugadores
+   */
+  describe('Lista de jugadores:', () => {
+    it('Devuelve un listado con todos los jugadores', (done) => {
+      supertest(app)
+        .get('/get_jugadores')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          //console.log( res.body ); // Para comprobar qué contiene exactamente res.body
+          assert(res.body.data[0].data.hasOwnProperty('nombre'));
+          assert(res.body.data[0].data.hasOwnProperty('apellidos'));
+          assert(res.body.data[0].data.nombre === "Leo");
+          assert(res.body.data[0].data.nombre != "Messi");
+          assert(res.body.data.length === 10);
         })
         .end((error) => { error ? done.fail(error) : done(); }
         );

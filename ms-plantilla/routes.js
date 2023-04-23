@@ -46,6 +46,17 @@ router.get("/test_db", async (req, res) => {
     }
 });
 
+/**
+ * Ruta de get_jugadores
+ */
+router.get("/get_jugadores", async (req, res) => {
+    try {
+        await callbacks.get_jugadores(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 
 // Exporto el módulo para poder usarlo en server
 module.exports = router;

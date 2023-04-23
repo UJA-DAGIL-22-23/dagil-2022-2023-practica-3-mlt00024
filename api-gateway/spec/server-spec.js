@@ -40,6 +40,49 @@ describe('API Gateway: rutas estáticas', () => {
         .end((error) => { error ? done.fail(error) : done() })
     });
   })
+  /**
+   * Tests para acceso a la BBDD
+   */
+  describe('Acceso a BBDD:', () => {
+    it('Devuelve los nombres al ir por la ruta test_db', (done) => {
+      supertest(app)
+        .get('/plantilla/test_db')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          //console.log( res.body ); // Para comprobar qué contiene exactamente res.body
+          assert(res.body.data[0].data.hasOwnProperty('nombre'));
+          assert(res.body.data[0].data.nombre === "Leo");
+
+        })
+        .end((error) => { error ? done.fail(error) : done(); }
+        );
+    });
+
+  })
+
+  /**
+   * Listar jugadores
+   */
+  describe('Lista de jugadores:', () => {
+    it('Devuelve un listado con todos los jugadores', (done) => {
+      supertest(app)
+        .get('/plantilla/get_jugadores')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          //console.log( res.body ); // Para comprobar qué contiene exactamente res.body
+          assert(res.body.data[0].data.hasOwnProperty('nombre'));
+          assert(res.body.data[0].data.hasOwnProperty('apellidos'));
+          assert(res.body.data[0].data.nombre === "Leo");
+          assert(res.body.data[0].data.nombre != "Messi");
+          assert(res.body.data.length === 10);
+        })
+        .end((error) => { error ? done.fail(error) : done(); }
+        );
+    });
+
+  })
 });
 
 
