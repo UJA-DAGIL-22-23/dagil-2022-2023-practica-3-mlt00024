@@ -321,4 +321,40 @@ Plantilla.procesarListaJugadoresCompleta = function () {
     Plantilla.recuperatodo(Plantilla.imprimetodo);
 }
 
+/**
+ * Función que imprime todos los datos de todos los jugadores ordenados alfabéticamente
+ * @param {Vector_de_jugadores} vector 
+ */
+Plantilla.imprimeorden = function(vector) {
+    // Compongo el contenido que se va a mostrar dentro de la tabla
+    let msj = Plantilla.plantillaTablaJugadores.cabecera
+    if (vector && Array.isArray(vector)) {
+        vector.sort(function(a, b) {
+            let nombreA = a.data.nombre.toUpperCase(); 
+            let nombreB = b.data.nombre.toUpperCase(); 
+            if (nombreA > nombreB) {
+                return 1;
+            }
+            if (nombreA < nombreB) {
+                return -1;
+            }
+            return 0;
+        });
+
+        vector.forEach(e => msj += Plantilla.plantillaTablaJugadores.actualizajugador(e));
+    }
+    msj += Plantilla.plantillaTablaJugadores.pie
+
+    // Borrar toda la información del Article y la sustituyo por la que ma interesa
+    Frontend.Article.actualizar("Nombres de los jugadores ordenados alfabeticamente", msj)
+}
+
+
+/**
+ * Función principal para recuperar los jugadores desde el MS y, posteriormente, ordenarlos.
+ */
+Plantilla.ordenaListaNombresJugadores = function () {
+    Plantilla.recupera(Plantilla.imprimeorden);
+}
+
 
