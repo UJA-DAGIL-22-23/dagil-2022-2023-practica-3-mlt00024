@@ -155,6 +155,20 @@ describe("Plantilla.imprimetodo: ", function() {
         })
 })
 
+describe("Plantilla.imprimeorden: ", function() {
+    it("Mostrar datos nulos cuando le pasamos vector nulo",
+        function() {
+            Plantilla.imprimeorden([])
+            expect(elementoTitulo.innerHTML).toBe("Nombres de los jugadores ordenados alfabeticamente")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+    it("Mostrar datos nulos cuando le pasamos un valor que no es un objeto",
+        function() {
+            Plantilla.imprimeorden(10)
+            expect(elementoTitulo.innerHTML).toBe("Nombres de los jugadores ordenados alfabeticamente")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+})
 
 /*
 IMPORTANTE
