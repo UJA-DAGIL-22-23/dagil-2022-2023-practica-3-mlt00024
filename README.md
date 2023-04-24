@@ -1,5 +1,151 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/hneiFYl3)
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10405394&assignment_repo_type=AssignmentRepo)
+# Datos del alumno
+### Manuel Lara Torres
+
+Estudiante de tercer curso del Grado en Ingeniería Informática de la Universidad de Jaén.
+* **Correo**: mlt000024@red.ujaen.es
+* **GitHub**: https://github.com/mlt00024/
+* **Trello**: https://trello.com/u/mlt00024
+
+## Creacion de la BD en Fauna
+Para coimenzar conm la practica, necesito crear la BD en fauna, y meter en ella datos de forma que se cumpla con los requerimientos minimos que estos deben tener. Tras realizar este proceso todo queda así:
+<image src="./assets/img/faunainicio.png">
+<image src="./assets/img/indexbd.png">
+<image src="./assets/img/datosbd.png">
+### Datos de la coleccion:
+```javascript
+{
+  nombre: "Leo",
+  apellidos: "Messi",
+  fnac: {
+    dia: 21,
+    mes: 7,
+    anio: 1987
+  },
+  equipos: ["F.C Barcelona", "Paris Saint-Germain F.C."],
+  goles: 701
+}
+{
+  nombre: "Cristiano",
+  apellidos: "Ronaldo",
+  fnac: {
+    dia: 28,
+    mes: 12,
+    anio: 1985
+  },
+  equipos: [
+    "Sporting C.P.",
+    "Manchester United F.C.",
+    "Real Madrid C.F.",
+    "Juventus F.C.",
+    "Al-Nassr F.C."
+  ],
+  goles: 801
+}
+{
+  nombre: "Andres",
+  apellidos: "Iniesta",
+  fnac: {
+    dia: 7,
+    mes: 8,
+    anio: 1984
+  },
+  equipos: ["F.C. Barcelona", "Vissel Kobe F.C."],
+  goles: 433
+}
+{
+  nombre: "Miguel",
+  apellidos: "Garcia",
+  fnac: {
+    dia: 23,
+    mes: 9,
+    anio: 1991
+  },
+  equipos: ["Jaen F.C.", "Linares Dptvo"],
+  goles: 123
+}
+{
+  nombre: "Victor",
+  apellidos: "Rivas",
+  fnac: {
+    dia: 8,
+    mes: 12,
+    anio: 2000
+  },
+  equipos: ["UJA F.C."],
+  goles: 1000
+}
+{
+  nombre: "Jacobo",
+  apellidos: "Jimenez",
+  fnac: {
+    dia: 28,
+    mes: 2,
+    anio: 2002
+  },
+  equipos: ["JavaScript F.C."],
+  goles: 0
+}
+{
+  nombre: "Angel",
+  apellidos: "Muñoz",
+  fnac: {
+    dia: 8,
+    mes: 12,
+    anio: 2000
+  },
+  equipos: ["Matematicas F.C."],
+  goles: 98
+}
+{
+  nombre: "Andres",
+  apellidos: "Cruz",
+  fnac: {
+    dia: 1,
+    mes: 1,
+    anio: 1979
+  },
+  equipos: ["SQL F.C."],
+  goles: 0
+}
+{
+  nombre: "Enrique",
+  apellidos: "Fernandez",
+  fnac: {
+    dia: 6,
+    mes: 1,
+    anio: 2001
+  },
+  equipos: ["Criptos F.C.", "Real MSC S.A.D."],
+  goles: 145
+}
+{
+  nombre: "Manuel",
+  apellidos: "Lara",
+  fnac: {
+    dia: 21,
+    mes: 7,
+    anio: 2002
+  },
+  equipos: ["Discreta F.C.", "EEDD F.C.", "Desarrollo Agil F.C."],
+  goles: 327
+}
+```
+
+## Incremento 1
+
+Para este incremento he realizado las Historias de Usuario 1, 2 y 4, HUs basicas que me permiten comprender el funcionamiento del proyecto.
+El tablero de trello al inicio estaba asi:
+<image src="./assets/img/incremento1 inicio.png">
+Y al final queda asi:
+<image src="./assets/img/incremento1 fin.png">
+Y asi quedan las funcionalidades implementadas:
+<image src="./assets/img/acercade.png">
+<image src="./assets/img/listanombres.png">
+<image src="./assets/img/listajugadorescompleta.png">
+
+
 # *Plantilla Práctica Microservicios*: descripción de la aplicación
 
 Este código que se presenta aquí corresponde a la plantilla para realizar un desarrollo basado en microservicios para las prácticas de Desarrollo Ágil, para el curso 2022-2023.
