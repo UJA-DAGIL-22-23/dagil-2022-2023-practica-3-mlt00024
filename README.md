@@ -7,6 +7,7 @@ Estudiante de tercer curso del Grado en Ingeniería Informática de la Universid
 * **Correo**: mlt000024@red.ujaen.es
 * **GitHub**: https://github.com/mlt00024/
 * **Trello**: https://trello.com/u/mlt00024
+* **Tablero de esta practica**: https://trello.com/invite/b/mERDi6zZ/ATTIc9081fea076d25b83145476a5444749932ED55AA/pr3-d-agil-mlt00024
 
 ## Creacion de la BD en Fauna
 Para coimenzar conm la practica, necesito crear la BD en fauna, y meter en ella datos de forma que se cumpla con los requerimientos minimos que estos deben tener. Tras realizar este proceso todo queda así:
@@ -583,8 +584,3 @@ https://github.com/UJA-Desarrollo-Agil/descripcion-proyecto-microservicios-perso
 El código en ese repositorio muestra una aplicación similar, pero con mucha más funcionalidad que esta plantilla: acceso a base de datos remota, listado de documentos recuperados de la BBDD, peticiones entre distintos microservicios, etc.
 
 Además, incluye documentación sobre dicho código y un vídeo descriptivo de cómo se ha realizado y cómo funciona la aplicación de ejemplo.
-
-### TABLERO DE TRELLO
-```
-https://trello.com/invite/b/mERDi6zZ/ATTIc9081fea076d25b83145476a5444749932ED55AA/pr3-d-agil-mlt00024
-```
