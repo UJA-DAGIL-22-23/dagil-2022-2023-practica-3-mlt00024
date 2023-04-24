@@ -357,4 +357,38 @@ Plantilla.ordenaListaNombresJugadores = function () {
     Plantilla.recupera(Plantilla.imprimeorden);
 }
 
+/**
+ * Función que recupera a los jugadores mediante el nombre.
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */
+Plantilla.recuperanombre = async function (callBackFn,nombre) {
+    let response = null
+
+    // Intento conectar con el microservicio 
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/get_jugadores_completa"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los jugadores que se han descargado
+    let vectorJugadores = null
+    if (response) {
+        vectorJugadores = await response.json()
+        const filtro = vectorJugadores.data.filter(jugador => jugador.data.nombre === nombre)
+        callBackFn(filtro)
+    }
+}
+
+/**
+ * Función principal para encontrar jugador por nombre.
+ */
+Plantilla.busquedaporNombre = function (nombre) {
+    Plantilla.recuperanombre(Plantilla.imprimetodo,nombre);
+}
+
 
