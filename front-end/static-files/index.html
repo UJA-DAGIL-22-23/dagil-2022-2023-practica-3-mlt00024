@@ -39,6 +39,14 @@
             <input type="text" placeholder="nombre" id="busqueda_nombre">
             <button class="btn" onclick="Plantilla.busquedaporNombre(document.getElementById('busqueda_nombre').value)">Buscar por nombre</button>
             <div></div>
+
+            <div></div>
+
+        <input type="text" placeholder="Nombre" id="criterio-1">
+        <input type="text" placeholder="Apellido" id="criterio-2">
+        <input type="text" placeholder="Goles"id="criterio-3">
+        <button class="btn" onclick="Plantilla.buscaCriterio(document.getElementById('criterio-1').value, document.getElementById('criterio-2').value, document.getElementById('criterio-3').value, true)">Buscar por algún criterio</button>
+        <button class="btn" onclick="Plantilla.buscaCriterio(document.getElementById('criterio-1').value, document.getElementById('criterio-2').value, document.getElementById('criterio-3').value, false)">Buscar todos los criterios</button>
     
     </nav>
 

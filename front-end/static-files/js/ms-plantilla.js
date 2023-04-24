@@ -391,4 +391,42 @@ Plantilla.busquedaporNombre = function (nombre) {
     Plantilla.recuperanombre(Plantilla.imprimetodo,nombre);
 }
 
+/**
+ * Función que recupera todos los jugadores llamando al MS Plantilla
+ * Posteriormente, llama a la función callBackFn para trabajar con los datos recuperados.
+ * @param {string} criterio1 El primer criterio por el que que se busca
+ * @param {string} criterio2 El segundo criterio por el que se busca
+ * @param {string} criterio3 El tercer criterio por el que se busca
+ * @param {funcion} callBackFn Función a la que se llamará una vez recibidos los datos
+ */
+Plantilla.buscaxCriterio = async function (criterio1, criterio2, criterio3, tipo, callBackFn) {
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/get_jugadores_completa"
+        const response = await fetch(url);
+        let vectorJugadores = null
+        if (response) {
+            vectorJugadores = await response.json()
+            if(tipo){
+                const filtro = vectorJugadores.data.filter(jugador => jugador.data.nombre === criterio1 || jugador.data.apellidos === criterio2 || jugador.data.goles === parseInt(criterio3))
+                callBackFn(filtro)
+            }else{
+            const filtro = vectorJugadores.data.filter(jugador => jugador.data.nombre === criterio1 && jugador.data.apellidos === criterio2 && jugador.data.goles === parseInt(criterio3))
+            callBackFn(filtro)}
+        }
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Geteway")
+        console.error(error)
+    }
+}
+
+/**
+ * Función principal para encontrar jugador por criterios
+ * @param {string} crit1 El primer criterio por el que se busca
+ * @param {string} crit2 El segundo criterio por el que se busca
+ * @param {string} crit3 El tercer criterio por el que se busca
+ * @param {bool} tipo Tipo de busqueda a realizar
+ */
+Plantilla.buscaCriterio = function (crit1, crit2, crit3, tipo) {
+    this.buscaxCriterio(crit1, crit2, crit3, tipo, this.imprimetodo); 
+}
 
