@@ -146,6 +146,16 @@ Y asi quedan las funcionalidades implementadas:
 <image src="./assets/img/listanombres.png">
 <image src="./assets/img/listajugadorescompleta.png">
 
+## Incremento 2
+Para este incremento he realizado las Historias de Usuario 3, 8, 10 y 11, HUs de busqueda.
+El tablero de trello al inicio estaba asi:
+<image src="./assets/img/incremento2inicio.png">
+Y al final queda asi:
+<image src="./assets/img/incremento2fin.png">
+Y asi quedan las funcionalidades implementadas:
+<image src="./assets/img/ordenados.png">
+<image src="./assets/img/busquedas.png">
+
 
 # *Plantilla Práctica Microservicios*: descripción de la aplicación
 
