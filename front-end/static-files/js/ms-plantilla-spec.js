@@ -139,6 +139,22 @@ describe("Plantilla.imprimenobres: ", function() {
         })
 })
 
+describe("Plantilla.imprimetodo: ", function() {
+    it("Mostrar datos nulos cuando le pasamos vector nulo",
+        function() {
+            Plantilla.imprimetodo([])
+            expect(elementoTitulo.innerHTML).toBe("Datos de los jugadores")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+
+    it("Mostrar datos nulos cuando le pasamos un valor que no es un objeto",
+        function() {
+            Plantilla.imprimetodo(10)
+            expect(elementoTitulo.innerHTML).toBe("Datos de los jugadores")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+})
+
 
 /*
 IMPORTANTE

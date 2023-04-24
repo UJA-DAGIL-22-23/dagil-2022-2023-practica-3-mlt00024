@@ -57,6 +57,16 @@ router.get("/get_jugadores", async (req, res) => {
     }
 });
 
+/**
+ * Ruta de get_jugadores completa
+ */
+router.get("/get_jugadores_completa", async (req, res) => {
+    try {
+        await callbacks.get_jugadores_completa(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 // Exporto el módulo para poder usarlo en server
 module.exports = router;

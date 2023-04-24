@@ -123,6 +123,28 @@ const CB_OTHERS = {
         }
     },
 
+    /**
+     * Método para obtener todos los datos de los jugadores de la BD.
+     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
+     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
+     */
+    get_jugadores_completa: async (req, res) => {
+        try {
+            let personas = await client.query(
+                q.Map(
+                    q.Paginate(q.Documents(q.Collection(COLLECTION))),
+                    q.Lambda("X", q.Get(q.Var("X")))
+                )
+            )
+            // console.log( personas ) // Para comprobar qué se ha devuelto en jugadores
+            CORS(res)
+                .status(200)
+                .json(personas)
+        } catch (error) {
+            CORS(res).status(500).json({ error: error.description })
+        }
+    },
+
 }
 
 // Une todos los callbacks en un solo objeto para poder exportarlos.

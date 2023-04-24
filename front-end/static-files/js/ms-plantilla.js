@@ -213,4 +213,112 @@ Plantilla.procesarListaJugadores = function () {
     Plantilla.recupera(Plantilla.imprimenombres);
 }
 
+/**
+ * Función que recuperar todos los jugadores llamando al MS Plantilla
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */
+
+Plantilla.recuperatodo = async function (callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio 
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/get_jugadores_completa"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los jugadores que se han descargado
+    let vectorJugadores = null
+    if (response) {
+        vectorJugadores = await response.json()
+        callBackFn(vectorJugadores.data)
+    }
+}
+
+/**
+ * Actualiza el cuerpo de la plantilla deseada con los datos del jugador que se le pasa
+ * @param {String} plantilla Cadena conteniendo HTML en la que se desea cambiar los campos de la plantilla por datos
+ * @param {Plantilla} jugador Objeto con los datos del jugador que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */ 
+Plantilla.sustituyeTodosTags = function (plantilla, jugador) {
+    return plantilla
+        .replace(new RegExp(Plantilla.plantillaTags.nombre, 'g'), jugador.data.nombre)
+        .replace(new RegExp(Plantilla.plantillaTags.apellidos, 'g'), jugador.data.apellidos)
+        .replace(new RegExp(Plantilla.plantillaTags.fnac, 'g'), jugador.data.fnac.dia+"/"
+                                        +jugador.data.fnac.mes+"/"+jugador.data.fnac.anio)
+        .replace(new RegExp(Plantilla.plantillaTags["equipos"], 'g'), jugador.data.equipos)
+        .replace(new RegExp(Plantilla.plantillaTags.goles, 'g'), jugador.data.goles)
+}
+
+/// Plantilla para poner los datos de varios jugadores dentro de una tabla
+Plantilla.plantillaTablaJugadoresAll = {}
+
+// Cabecera de la tabla de jugadores
+Plantilla.plantillaTablaJugadoresAll.cabecera = `<table width="100%" class="listado-personas">
+                    <thead>
+                        <th width="20%">Nombre</th>
+                        <th width="20%">Apellidos</th>
+                        <th width="20%">Fecha de nacimiento</th>
+                        <th width="20%">Equipos</th>
+                        <th width="20%">Goles</th>
+                    </thead>
+                    <tbody>`;
+
+// Elemento TR que muestra los datos de los jugadores
+Plantilla.plantillaTablaJugadoresAll.cuerpo = `
+    <tr title="${Plantilla.plantillaTags.nombre}">
+        <td>${Plantilla.plantillaTags.nombre}</td>
+        <td>${Plantilla.plantillaTags.apellidos}</td>
+        <td>${Plantilla.plantillaTags.fnac}</td>
+        <td>${Plantilla.plantillaTags["equipos"]}</td>
+        <td>${Plantilla.plantillaTags.goles}</td>
+        <td>
+                    <div></div>
+        </td>
+    </tr>
+    `;
+
+// Pie de la tabla
+Plantilla.plantillaTablaJugadoresAll.pie = `</tbody>
+</table>
+`;
+
+             /**
+ * Actualiza el formulario con los datos del jugador que se le pasa
+ * @param {Plantilla} Plantilla Objeto con los datos del jugador que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */
+
+Plantilla.plantillaTablaJugadoresAll.actualizatodojugador = function (jugador) {
+    return Plantilla.sustituyeTodosTags(this.cuerpo, jugador)
+}
+
+/**
+ * Función para mostrar en pantalla todos los datos de jugadores que se han recuperado de la BD.
+ * @param {Vector_de_jugadores} vector Vector con los datos de los jugadores a mostrar
+ */
+
+Plantilla.imprimetodo = function (vector) {
+    let msj = Plantilla.plantillaTablaJugadoresAll.cabecera
+    if (vector && Array.isArray(vector)) {
+        vector.forEach(e => msj += Plantilla.plantillaTablaJugadoresAll.actualizatodojugador(e));
+    }
+    msj += Plantilla.plantillaTablaJugadoresAll.pie
+
+    Frontend.Article.actualizar("Datos de los jugadores", msj)
+}
+
+/**
+ * Función principal para recuperar los jugadores desde el MS y, posteriormente, imprimirlos.
+ */
+Plantilla.procesarListaJugadoresCompleta = function () {
+    Plantilla.recuperatodo(Plantilla.imprimetodo);
+}
+
 

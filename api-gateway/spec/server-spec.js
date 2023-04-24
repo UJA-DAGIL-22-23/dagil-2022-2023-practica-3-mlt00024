@@ -81,8 +81,33 @@ describe('API Gateway: rutas estáticas', () => {
         .end((error) => { error ? done.fail(error) : done(); }
         );
     });
-
   })
+  /**
+   * Listar todos los datos de los jugadores
+   */
+describe('Lista de jugadores completa:', () => {
+  it('Devuelve un listado con todos los jugadores', (done) => {
+    supertest(app)
+      .get('/plantilla/get_jugadores_completa')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .expect(function (res) {
+        //console.log( res.body ); // Para comprobar qué contiene exactamente res.body
+        assert(res.body.data[0].data.hasOwnProperty('nombre'));
+        assert(res.body.data[0].data.hasOwnProperty('apellidos'));
+        assert(res.body.data[0].data.hasOwnProperty('fnac'));
+        assert(res.body.data[0].data.hasOwnProperty('equipos'));
+        assert(res.body.data[0].data.hasOwnProperty('goles'));
+        assert(res.body.data[0].data.nombre === "Leo");
+        assert(res.body.data[0].data.nombre != "Messi");
+        assert(res.body.data[0].data.fnac.dia === 21);
+        assert(res.body.data[0].data.equipos[0] === "F.C Barcelona");
+        assert(res.body.data.length === 10);
+      })
+      .end((error) => { error ? done.fail(error) : done(); }
+      );
+  });
+})
 });
 
 
