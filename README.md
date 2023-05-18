@@ -138,9 +138,9 @@ Para coimenzar conm la practica, necesito crear la BD en fauna, y meter en ella 
 
 Para este incremento he realizado las Historias de Usuario 1, 2 y 4, HUs basicas que me permiten comprender el funcionamiento del proyecto.
 El tablero de trello al inicio estaba asi:
-<image src="./assets/img/incremento1 inicio.png">
+<image src="./assets/img/Incremento1 inicio.png">
 Y al final queda asi:
-<image src="./assets/img/incremento1 fin.png">
+<image src="./assets/img/Incremento1 fin.png">
 Y asi quedan las funcionalidades implementadas:
 <image src="./assets/img/acercade.png">
 <image src="./assets/img/listanombres.png">
